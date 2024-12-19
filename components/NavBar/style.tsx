@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
+        boxShadow: "0 -5px 20px rgba(0, 0, 0, .1)"
     },
     btn: {
         height: 100,
@@ -15,4 +16,9 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
+    icon: {
+        height: 90,
+        width: 90,
+        opacity: 0.3
+    }
 });
