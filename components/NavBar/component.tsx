@@ -22,13 +22,14 @@ function Btn({icon, page}: { icon: any; page: any }) {
 }
 
 function NavBar() {
+
     return (
         <View style={styles.navBar}>
-            <Btn icon="house" page="/"/>
+            <Btn icon="house" page="/home/lessons"/>
             <Image source={require('../../assets/images/icon.png')} style={styles.icon}/>
-            <Btn icon="plus" page="/add"/>
+            <Btn icon="plus" page="/home/add"/>
         </View>
-    );
+    )
 }
 
 export default NavBar;

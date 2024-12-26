@@ -1,20 +1,15 @@
-import { Slot } from "expo-router";
+import {Slot, usePathname, useRouter} from "expo-router";
 import NavBar from "@/components/NavBar/component";
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import React, {useEffect} from "react";
+import {View, StyleSheet} from "react-native";
 
-const styles = StyleSheet.create({
-    root: {
-        flex: 1,
-        flexDirection: "column-reverse",
-    },
-});
+export default function Layout() {
+    const path = usePathname(),
+        router = useRouter();
 
-export default function RootLayout() {
-    return (
-        <View style={styles.root}>
-            <NavBar />
-            <Slot />
-        </View>
-    );
+    useEffect(() => {
+        if (path === '/') router.replace('/home/lessons');
+    }, [router]);
+
+    return <Slot />;
 }
