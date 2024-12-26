@@ -1,5 +1,5 @@
 import React from "react";
-import {Animated, View} from "react-native";
+import {Animated, Text, View} from "react-native";
 import ScrollView = Animated.ScrollView;
 import LessonItem from "@/components/lessonItem/component";
 import {StyleSheet} from "react-native";
@@ -14,18 +14,17 @@ const styles = StyleSheet.create({
         gap: 50
     },
     top: {
-        height: 120,
+        paddingTop: 70,
         display: "flex",
         justifyContent: "flex-end"
     },
     headline: {
         fontSize: 50,
         fontFamily: "sans-serif",
-        margin: 0
+        margin: 0,
+        wordWrap: "break-word"
     },
-    scrollView:{
-        display: "flex",
-        flexDirection: "column",
+    scrollView: {
         gap: 50
     }
 })
@@ -34,17 +33,10 @@ export default function () {
     return (
         <View style={styles.view}>
             <View style={styles.top}>
-                <p style={styles.headline}>Home</p>
+                <Text style={styles.headline}>Home</Text>
             </View>
             <ScrollView style={styles.scrollView}>
-                <LessonItem name={"Unite 1"} date={new Date()} length={20}/>
-                <LessonItem name={"Unite 1"} date={new Date()} length={20}/>
-                <LessonItem name={"Unite 1"} date={new Date()} length={20}/>
-                <LessonItem name={"Unite 1"} date={new Date()} length={20}/>
-                <LessonItem name={"Unite 1"} date={new Date()} length={20}/>
-                <LessonItem name={"Unite 1"} date={new Date()} length={20}/>
-                <LessonItem name={"Unite 1"} date={new Date()} length={20}/>
-                <LessonItem name={"Unite 1"} date={new Date()} length={20}/>
+                <LessonItem id={"OwO"}/>
             </ScrollView>
         </View>
     );

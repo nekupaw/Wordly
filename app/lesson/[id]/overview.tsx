@@ -1,8 +1,7 @@
 import React from "react";
-import {Animated, Text, View} from "react-native";
-import ScrollView = Animated.ScrollView;
-import LessonItem from "@/components/lessonItem/component";
+import {Text, View} from "react-native";
 import {StyleSheet} from "react-native";
+import {useLocalSearchParams} from "expo-router/build/hooks";
 
 const styles = StyleSheet.create({
     view: {
@@ -22,15 +21,17 @@ const styles = StyleSheet.create({
     }
 })
 
+
 export default function () {
+
+    const {id} = useLocalSearchParams();
+
     return (
         <View style={styles.view}>
             <View style={styles.top}>
-                <Text style={styles.headline}>Add a Lesson</Text>
+                <Text style={styles.headline}>{id}</Text>
             </View>
-            <ScrollView>
-
-            </ScrollView>
         </View>
     );
 }
+

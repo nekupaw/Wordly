@@ -1,9 +1,9 @@
-import {View} from "react-native";
+import {Text, TouchableOpacity, View} from "react-native";
 import {StyleSheet} from "react-native";
+import {useRouter} from "expo-router";
 
 const styles = StyleSheet.create({
     item: {
-        boxShadow: "0 5px 10px rgba(0, 0, 0, 0.2)",
         padding: 25,
         boxSizing: "border-box",
         borderRadius: 20,
@@ -12,7 +12,9 @@ const styles = StyleSheet.create({
         gap: 10,
         borderStyle: "solid",
         borderColor: "black",
-        borderWidth: 1
+        borderWidth: 1,
+        backgroundColor: "#f6f6f6",
+        marginTop: 20
     },
 
     name: {
@@ -36,15 +38,17 @@ const styles = StyleSheet.create({
 });
 
 
-function LessonItem({name, date, length}: { name: string, date: Date, length: number }) {
+function LessonItem({id}: {id: string }) {
+    const router= useRouter();
+
     return (
-        <View style={styles.item}>
-            <p style={styles.name}>{name}</p>
+        <TouchableOpacity style={styles.item} onPress={() => router.push(`/lesson/${id}/overview`)}>
+            <Text style={styles.name}>{id}</Text>
             <View style={styles.bottom}>
-                <p style={styles.bottomFont}>words: {length}</p>
-                <p style={styles.bottomFont}>lesson added: {date.toLocaleDateString('de-DE')}</p>
+                <Text style={styles.bottomFont}>words: {20}</Text>
+                <Text style={styles.bottomFont}>lesson added: {new Date().toLocaleDateString('de-DE')}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
