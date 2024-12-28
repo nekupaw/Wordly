@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
 });
 
 
-function LessonItem({id}: {id: string }) {
-    const router= useRouter();
+function LessonItem({id}: { id: string }) {
+    const router = useRouter();
 
     return (
         <TouchableOpacity style={styles.item} onPress={() => router.push(`/lesson/${id}/overview`)}>

@@ -1,4 +1,7 @@
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Dispatch, SetStateAction, useState} from "react";
+import ContinueBtn from "@/components/ContinueBtn/component";
+import ProgressBar from "@/components/ProgressBar/component";
 
 const styles = StyleSheet.create({
     view: {
@@ -16,10 +19,12 @@ const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#e1e1e1"
+        backgroundColor: "#ececec"
     },
     flashCardTop: {
-        backgroundColor: "#b0b0b0",
+        top: 0,
+        left: 0,
+        backgroundColor: "#dadada",
         position: "absolute",
         height: `${100}%`,
         width: `${100}%`,
@@ -27,19 +32,30 @@ const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        transitionProperty: ".5s ease"
+        transitionDuration: "0.3s",
+        transitionTimingFunction: "ease",
+        overflow: "hidden"
+    },
+    flashCardShow: {
+        width: 0
     },
     flashCardText: {
         fontSize: 30,
         color: "black"
     }
-
 });
 
-function FlashCard() {
+function FlashCard({ setShowContinueBtn }: { setShowContinueBtn: Dispatch<SetStateAction<boolean>> }) {
+    const [showCard, setShowCard] = useState<boolean>(false);
+
+    function show(){
+        setShowCard(!showCard);
+        setShowContinueBtn(true);
+    }
+
     return (
-        <TouchableOpacity style={styles.flashCard}>
-            <View style={styles.flashCardTop}>
+        <TouchableOpacity style={styles.flashCard} onPress={show}>
+            <View style={[styles.flashCardTop, showCard ? styles.flashCardShow : null]}>
                 <Text style={styles.flashCardText}>Hello</Text>
             </View>
             <Text style={styles.flashCardText}>Hallo</Text>
@@ -48,9 +64,14 @@ function FlashCard() {
 }
 
 export default function () {
+
+    const [showContinueBtn, setShowContinueBtn] = useState<boolean>(false);
+
     return (
         <View style={styles.view}>
-            <FlashCard/>
+            <ProgressBar/>
+            <FlashCard setShowContinueBtn={setShowContinueBtn}/>
+            <ContinueBtn show={showContinueBtn}/>
         </View>
     )
 }

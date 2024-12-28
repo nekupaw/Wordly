@@ -1,7 +1,7 @@
 import React from "react";
 import {Animated, Text, View} from "react-native";
 import ScrollView = Animated.ScrollView;
-import LessonItem from "@/components/lessonItem/component";
+import LessonItem from "@/components/LessonItem/component";
 import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
