@@ -11,5 +11,5 @@ export default function Layout() {
         if (path === '/') router.replace('/home/lessons');
     }, [router]);
 
-    return <Slot />;
+    return <Slot/>;
 }
